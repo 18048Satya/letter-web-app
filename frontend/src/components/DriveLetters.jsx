@@ -16,13 +16,13 @@ const DriveLetters = () => {
   const fetchDriveLetters = async () => {
     try {
       // First check if user is authenticated
-      const authResponse = await axios.get('https://letter-web-app.onrender.com/api/auth/current-user');
+      const authResponse = await axios.get('http://localhost:5000/api/auth/current-user');
       if (!authResponse.data) {
         navigate('/');
         return;
       }
 
-      const response = await axios.get('https://letter-web-app.onrender.com/api/letters/drive/letters', {
+      const response = await axios.get('http://localhost:5000/api/letters/drive/letters', {
         withCredentials: true
       });
       setLetters(response.data);
