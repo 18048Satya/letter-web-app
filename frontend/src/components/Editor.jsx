@@ -75,7 +75,7 @@ const Editor = () => {
         });
         navigate(`/editor/${response.data._id}`);
       } else {
-        await axios.put(`https://letter-web-app.onrender.com/api/letters/${id}`, {
+        await axios.put(`http://localhost:5000/api/letters/${id}`, {
           title,
           content
         }, {
