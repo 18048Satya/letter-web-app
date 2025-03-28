@@ -29,7 +29,7 @@ router.get('/google/callback',
       res.redirect(process.env.FRONTEND_URL || 'http://localhost:3000');
     } catch (error) {
       console.error('Error saving tokens:', error);
-      res.redirect('/login');
+      res.redirect('/dashboard');
     }
   }
 );
