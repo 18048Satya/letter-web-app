@@ -13,7 +13,7 @@ export default defineConfig({
       },
     },
   },
-    base: '/letter-web-app/', // Add this line
+    base: '/', // Add this line
   build: {
     outDir: 'dist',
       assetsDir: 'assets' 
