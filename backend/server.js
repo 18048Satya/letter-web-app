@@ -11,14 +11,18 @@ const app = express();
 
 // Middleware
 app.use(cors({
-origin: process.env.PORT || 'https://letter-web-app-f.onrender.com',
+  origin: ['http://localhost:5173', 'https://letter-web-app-f.onrender.com'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use((req, res, next) => {
   res.setHeader("Content-Security-Policy",
-    "default-src 'self'; connect-src 'self' https://letter-web-app.onrender.com https://www.googleapis.com;"
+    "default-src 'self' https://letter-web-app-f.onrender.com; " +
+    "connect-src 'self' https://letter-web-app-f.onrender.com https://www.googleapis.com; " +
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://letter-web-app-f.onrender.com; " +
+    "style-src 'self' 'unsafe-inline' https://letter-web-app-f.onrender.com; " +
+    "img-src 'self' data: https://letter-web-app-f.onrender.com;"
   );
   next();
 });
