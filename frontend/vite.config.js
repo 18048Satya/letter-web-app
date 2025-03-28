@@ -15,7 +15,8 @@ export default defineConfig({
   },
     base: '/letter-web-app/', // Add this line
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+      assetsDir: 'assets' 
   }
 
 }) 
