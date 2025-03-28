@@ -8,7 +8,7 @@ export default defineConfig({
     port: 10000,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://letter-web-app.onrender.com',
         changeOrigin: true,
       },
     },
