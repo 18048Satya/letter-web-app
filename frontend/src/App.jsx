@@ -39,7 +39,7 @@ function AppContent() {
 
   const checkAuth = async () => {
     try {
-      const response = await axios.get('https://letter-web-app.onrender.com/api/auth/current-user');
+      const response = await axios.get('http://localhost:5000/api/auth/current-user');
       setUser(response.data);
     } catch (error) {
       console.error('Auth check error:', error);
@@ -51,7 +51,7 @@ function AppContent() {
 
   const handleLogout = async () => {
     try {
-      await axios.post('https://letter-web-app.onrender.com/api/auth/logout');
+      await axios.post('http://localhost:5000/api/auth/logout');
       setUser(null);
       navigate('/login');
     } catch (error) {
