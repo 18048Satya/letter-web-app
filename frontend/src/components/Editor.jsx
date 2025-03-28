@@ -45,7 +45,7 @@ const Editor = () => {
 
   const fetchLetter = async () => {
     try {
-      const response = await axios.get(`https://letter-web-app.onrender.com/api/letters/${id}`, {
+      const response = await axios.get(`http://localhost:5000/api/letters/${id}`, {
         withCredentials: true
       });
       setLetter(response.data);
@@ -67,7 +67,7 @@ const Editor = () => {
     setSaving(true);
     try {
       if (isNewLetter) {
-        const response = await axios.post('https://letter-web-app.onrender.com/api/letters', {
+        const response = await axios.post('http://localhost:5000/api/letters', {
           title,
           content
         }, {
@@ -96,7 +96,7 @@ const Editor = () => {
 
   const handleSaveToDrive = async () => {
     try {
-      await axios.post(`https://letter-web-app.onrender.com/api/letters/${id}/save-to-drive`, {}, {
+      await axios.post(`http://localhost:5000/api/letters/${id}/save-to-drive`, {}, {
         withCredentials: true
       });
       alert('Letter saved to Google Drive successfully!');
