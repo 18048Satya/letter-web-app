@@ -11,10 +11,9 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['https://letter-web-app-f.onrender.com'],
+  origin: 'https://letter-web-app-f.onrender.com', // Your frontend URL
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'], // Explicitly allow these headers
 }));
 
 app.use(express.json());
