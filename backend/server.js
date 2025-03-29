@@ -11,21 +11,12 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://letter-web-app-f.onrender.com'],
+  origin: ['https://letter-web-app-f.onrender.com'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.use((req, res, next) => {
-  res.setHeader("Content-Security-Policy",
-    "default-src 'self' https://letter-web-app-f.onrender.com; " +
-    "connect-src 'self' https://letter-web-app-f.onrender.com https://www.googleapis.com; " +
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://letter-web-app-f.onrender.com; " +
-    "style-src 'self' 'unsafe-inline' https://letter-web-app-f.onrender.com; " +
-    "img-src 'self' data: https://letter-web-app-f.onrender.com;"
-  );
-  next();
-});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
@@ -61,9 +52,9 @@ app.use('/api/letters', letterRoutes);
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend')));
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend/index.html'));
+    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'));
   });
 }
 
